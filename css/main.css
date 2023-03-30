@@ -1,0 +1,60 @@
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+  
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+  
+tr:nth-child(even) {
+	background-color: #7ce2af
+}
+  
+th {
+	background-color: #7c0f65;
+    color: white;
+}
+  
+.button {
+	position: relative;
+    text-align: center;
+    padding: 10px;
+    border: 2px solid rgb(55, 12, 211);
+    background: rgba(20, 192, 4, 0.5);
+    color: rgb(230, 36, 78);
+    outline: none;
+    border-radius: 30px;
+    font-size: 14px;
+    width: 200px;
+}
+  
+.button:hover {
+	color: black;
+    background: white;
+}
+
+.buttonLoad {
+	position: relative;
+    text-align: center;
+    padding: 10px;
+    border: 2px solid rgb(55, 12, 211);
+    background: rgba(253, 88, 4, 0.5);
+    color: rgb(230, 36, 78);
+    outline: none;
+    border-radius: 30px;
+    font-size: 14px;
+    width: 200px;
+}
+  
+.buttonLoad:hover {
+	color: black;
+    background: white;
+}
