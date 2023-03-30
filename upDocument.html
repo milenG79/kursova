@@ -9,23 +9,47 @@
     <link href="css/bootstrap-4.4.1.css" rel="stylesheet">
 	<link href="css/main.css" rel="stylesheet">
 	<script>
-		window.onload = function() {
-        // Make an AJAX request to load the XML data
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-          if (this.readyState == 4 && this.status == 200) {
-            // Parse the XML data
-            var xmlDoc = this.responseXML;
-            var data = xmlDoc.getElementsByTagName("UPDocDetails")[0].childNodes[0].nodeValue;
-
-            // Update page with data
-            document.getElementById("my-output").innerHTML = "The data is: " + data;
-          }
-        };
-        xhttp.open("GET", "file:///C:/Users/Redemptor-PC/Documents/WebProject/up.xml", true);
-        xhttp.send();
-      };
-	</script>
+        function loadXMLDoc() {
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function () {
+  
+                // Request finished and response 
+                // is ready and Status is "OK"
+                if (this.readyState == 4 && this.status == 200) {
+                    empDetails(this);
+                }
+            };
+  
+            // employee.xml is the external xml file
+            xmlhttp.open("GET", "file:///C:/up.xml", true);
+            xmlhttp.send();
+        }
+  
+        function empDetails(xml) {
+            var i;
+            var xmlDoc = xml.responseXML;
+            var table =
+                '<tr><th>Nomer</th><th>Date</th>
+                    <th>Name</th><th>File</th></tr>';
+            var x = xmlDoc.getElementsByTagName("UPDocDetails");
+  
+            // Start to fetch the data by using TagName 
+            for (i = 0; i < x.length; i++) {
+                table += "<tr><td>" +
+                    x[i].getElementsByTagName("Nomer")[0]
+                    .childNodes[0].nodeValue + "</td><td>" +
+                    x[i].getElementsByTagName("NomerDate")[0]
+                    .childNodes[0].nodeValue + "</td><td>" +
+                    x[i].getElementsByTagName("DocName")[0]
+                    .childNodes[0].nodeValue + "</td><td>" +
+                    x[i].getElementsByTagName("UpFile")[0]
+                    .childNodes[0].nodeValue + "</td></tr>";
+            }
+  
+            // Print the xml data in table form
+            document.getElementById("table-id").innerHTML = table;
+        }
+    </script>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -97,7 +121,8 @@
         </div>
       </div>
     </div>
-	<div id="my-output"></div>
+	<br><br>
+    <table id="table-id"></table>
     <footer class="text-center">
       <div class="container">
         <div class="row">
