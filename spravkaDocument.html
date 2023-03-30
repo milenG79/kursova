@@ -1,134 +1,186 @@
 <!DOCTYPE html>
 <html lang="bg">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Курсова работа на HTML with css, JavaScript, JQuery</title>
-    <!-- Bootstrap -->
-    <link href="css/bootstrap-4.4.1.css" rel="stylesheet">
-	<link href="css/main.css" rel="stylesheet">
-	<script>
-		window.onload = function() {
-        // Make an AJAX request to load the XML data
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-          if (this.readyState == 4 && this.status == 200) {
-            // Parse the XML data
-            var xmlDoc = this.responseXML;
-            var data = xmlDoc.getElementsByTagName("UPDocDetails")[0].childNodes[0].nodeValue;
 
-            // Update page with data
-            document.getElementById("my-output").innerHTML = "The data is: " + data;
-          }
-        };
-        xhttp.open("GET", "up.xml", true);
-        xhttp.send();
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Курсова работа на HTML with css, JavaScript, JQuery</title>
+  <!-- Bootstrap -->
+  <link href="css/bootstrap-4.4.1.css" rel="stylesheet">
+  <link href="css/main.css" rel="stylesheet">
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="js/jquery-3.4.1.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap-4.4.1.js"></script>
+  <script>
+    $(document).ready(function () {
+      $("input").focus(function () {
+        $(this).css("background-color", "yellow");
+      });
+      $("input").blur(function () {
+        $(this).css("background-color", "white");
+      });
+      $("textarea").focus(function () {
+        $(this).css("background-color", "yellow");
+      });
+      $("textarea").blur(function () {
+        $(this).css("background-color", "white");
+      });
+    });
+  </script>
+  <script>
+    function loadXMLDoc() {
+      var xmlhttp = new XMLHttpRequest();
+      xmlhttp.onreadystatechange = function () {
+
+        // Request finished and response 
+        // is ready and Status is "OK"
+        if (this.readyState == 4 && this.status == 200) {
+          empDetails(this);
+        }
       };
-	</script>
-  </head>
-  <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="index.html"><img src="images/gerb.png" style="width: 50px; height: 50px;" alt="gerb" title="МИНИСТЕРСТВО НА ОТБРАНАТА"/></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+
+      // employee.xml is the external xml file
+      var radios = document.getElementsByName('RadioGroup1');
+
+      for (var i = 0, length = radios.length; i < length; i++) {
+        if (radios[i].checked) {
+          // do whatever you want with the checked radio
+          if (radios[i].value == 1) {
+            xmlhttp.open("GET", "up.xml", true);
+            xmlhttp.send();
+          }
+          if (radios[i].value == 2) {
+            xmlhttp.open("GET", "out.xml", true);
+            xmlhttp.send();
+          }
+          break;
+        }
+      }
+    }
+
+    function empDetails(xml) {
+      var i;
+      var xmlDoc = xml.responseXML;
+      var table =
+        "<tr><th>Изх. №</th><th>Дата</th><th>Наименование</th><th>Сканиран файл</th></tr>";
+      var x = xmlDoc.getElementsByTagName("UPDocDetails");
+
+      // Start to fetch the data by using TagName 
+      for (i = 0; i < x.length; i++) {
+        table += "<tr><td>" +
+          x[i].getElementsByTagName("Nomer")[0]
+            .childNodes[0].nodeValue + "</td><td>" +
+          x[i].getElementsByTagName("NomerDate")[0]
+            .childNodes[0].nodeValue + "</td><td>" +
+          x[i].getElementsByTagName("DocName")[0]
+            .childNodes[0].nodeValue + "</td><td><a href='data/'"+x[i].getElementsByTagName("UpFile")[0]
+            .childNodes[0].nodeValue + "'</a>" +
+          x[i].getElementsByTagName("UpFile")[0]
+            .childNodes[0].nodeValue + "</td></tr>";
+      }
+
+      // Print the xml data in table form
+      document.getElementById("table-id").innerHTML = table;
+    }
+  </script>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="index.html"><img src="images/gerb.png" style="width: 50px; height: 50px;" alt="gerb"
+        title="МИНИСТЕРСТВО НА ОТБРАНАТА" /></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="index.html">Начало</a>
-          </li>
-          
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Въвеждане / Извеждане</a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="upDocument.html">Входящи документи</a>
-              <a class="dropdown-item" href="outDocument.html">Изходящи документи</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="spravkaDocument.html">СПРАВКИ</a>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="index.html">Начало</a>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">Въвеждане / Извеждане</a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="upDocument.html">Входящи документи</a>
+            <a class="dropdown-item" href="outDocument.html">Изходящи документи</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="spravkaDocument.html">СПРАВКИ</a>
+          </div>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="contacts.html">Контакти</a>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="търсене на документ" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Търсене</button>
+      </form>
+    </div>
+  </nav>
+  <div class="container mt-2">
+    <div class="row">
+      <div class="col-12">
+        <div class="jumbotron">
+          <h1 class="text-center">СПРАВКИ</h1>
+          <div class="row justify-content-center">
+            <div class="col-auto">
+              <label>
+                <input type="radio" name="RadioGroup1" value="1" id="RadioGroup1_0">
+                по вх. документ</label>
             </div>
-		  </li>
-		  <li class="nav-item">
-            <a class="nav-link" href="contacts.html">Контакти</a>
-          </li>
-        </ul>
-        <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="search" placeholder="търсене на документ" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Търсене</button>
-        </form>
-      </div>
-    </nav>
-    <div class="container mt-2">
-      <div class="row">
-        <div class="col-12">
-          <div class="jumbotron">
-            <h1 class="text-center">СПРАВКИ</h1>
-			<div class="row justify-content-center">
-              <div class="col-auto">
-				<p>
-				  <label>
-				    <input type="radio" name="RadioGroup1" value="radioIn" id="RadioGroup1_0">
-				    Вх. документи</label>
-				</p>
-			  </div>
-			  <div class="col-auto">
-				<p>
-				  <label>
-				    <label>
-				    <input type="radio" name="RadioGroup1" value="radioOut" id="RadioGroup1_1">
-				    Изх. документи</label>
-				</p>
-			  </div>
-			  
-			</div>
-            <div class="row justify-content-center">
-              <div class="col-auto">
-				<label for="textfield">Търсене по номер:  </label>
-				<input type="number" name="nomerfield" id="nomerfield" style="">
-              </div>
-              <div class="col-auto">
-                <label for="textfield">Търсене по дата:  </label>
-				<input type="date" name="datefield" id="datefield">
-              </div>
+            <div class="col-auto">
+              <input type="radio" name="RadioGroup1" value="2" id="RadioGroup1_1">
+              по изх. документ</label>
             </div>
-			<div class="row justify-content-center">
-              <div class="col-auto">
-                <label for="textfield">Търсене по наименование на документа:  </label>
-				<textarea id="namefield" name="namefield" rows="2" style="width: 100%;" ></textarea>
-              </div>
+          </div>
+          <div class="row justify-content-center">
+            <div class="col-auto">
+              <label for="textfield">Търсене по номер: </label>
+              <input type="number" name="nomerfield" id="nomerfield">
             </div>
-			<div class="row justify-content-center">
-              <div class="col-auto">
-				<button type="button" class="btn btn-success btn-lg" 
-					onclick="saveXMLDoc()">Търси</button>
-              </div>
+            <div class="col-auto">
+              <label for="textfield">Търсене по дата: </label>
+              <input type="date" name="datefield" id="datefield">
             </div>
-			<br><br>
-			<div class="row justify-content-center">
-              <div class="col-auto">
-				<button type="button" class="btn btn-primary btn-lg" 
-					onclick="loadXMLDoc()">Зареди всички</button>
-              </div>
+          </div>
+          <div class="row justify-content-center">
+            <div class="col-auto">
+              <label for="textfield">Търсене по наименование на документа: </label>
+              <textarea id="namefield" name="namefield" rows="2" style="width: 100%;"></textarea>
             </div>
+          </div>
+          <br><br>
+          <div class="row justify-content-center">
+            <div class="col-auto">
+              <button type="button" class="btn btn-primary btn-lg" onclick="loadXMLDoc()">Търси</button>
+            </div>
+          </div>
+          <br><br>
+          <div class="row justify-content-center">
+            <table id="table-id"></table>
           </div>
         </div>
       </div>
     </div>
-	<div id="my-output"></div>
-    <footer class="text-center">
-      <div class="container">
-        <div class="row">
-          <div class="col-12">
-            <p>Copyright © Веселин Георгиев Всички права запазени.</p>
-          </div>
+  </div>
+
+  <footer class="text-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <p>Copyright © Веселин Георгиев Всички права запазени.</p>
         </div>
       </div>
-    </footer>
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="js/jquery-3.4.1.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap-4.4.1.js"></script>
-	
-  </body>
+    </div>
+  </footer>
+
+
+</body>
+
 </html>
