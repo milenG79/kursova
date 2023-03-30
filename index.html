@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="bg">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Курсова работа на HTML with css, JavaScript, JQuery</title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap-4.4.1.css" rel="stylesheet">
+	<link href="css/main.css" rel="stylesheet">
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="index.html"><img src="images/gerb.png" style="width: 50px; height: 50px;" alt="gerb" title="МИНИСТЕРСТВО НА ОТБРАНАТА"/></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="index.html">Начало</a>
+          </li>
+          
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Въвеждане / Извеждане</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="upDocument.html">Входящи документи</a>
+              <a class="dropdown-item" href="outDocument.html">Изходящи документи</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="spravkaDocument.html">СПРАВКИ</a>
+            </div>
+          </li>
+		  <li class="nav-item">
+            <a class="nav-link" href="contacts.html">Контакти</a>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="търсене на документ" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Търсене</button>
+        </form>
+      </div>
+    </nav>
+    <div class="container mt-2">
+      <div class="row">
+        <div class="col-12">
+          <div class="jumbotron">
+            <h1 class="text-center">ИНФОРМАЦИОННА СИСТЕМА "ДОКУМЕНТООБОРОТ"</h1>
+            <div class="row justify-content-center">
+              <div class="col-auto">
+                <p><a class="btn btn-success btn-lg" href="upDocument.html" role="button">ВХОДЯЩИ ДОКУМЕНТИ</a> </p>
+              </div>
+              <div class="col-auto">
+                <p><a class="btn btn-primary btn-lg" href="outDocument.html" role="button">ИЗХОДЯЩИ ДОКУМЕНТИ</a> </p>
+              </div>
+            </div>
+            <p class="text-center">Системата е създадена за водене на входяща и изходяща кореспонденция и проследяването й до нейното архивиране. Предлага и запазване на всички документи в pdf формат.</p>
+            <img src="images/logo.png" alt="" class="img-thumbnail center" style="align-items: center"> 
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="text-center col-md-6 col-12">
+          <h3>Базово обучение</h3>
+          <p>Подготвени са няколко бързи видео урока за бързо навлизане на начина на работа със системата. <br/> <br/> </p>
+			
+          <a class="btn btn-danger btn-lg" href="https://www.youtube.com/" target="_blank"  role="button">Видео уроци</a>
+        </div>
+		<hr>
+        <div class="text-center col-md-6 col-12">
+          <h3>Документация</h3>
+          <p>За по-лесна работа със системата е разработено Ръководство на потребителя. Задължително всеки потребител трябва да се запознае с ръководството за по-лесна работа.</p>
+          <a class="btn btn-info btn-lg" href="data/manual.pdf" target="_blank" role="button">Ръководство на потребителя</a>
+        </div>
+      </div>
+    </div>
+	  <br/>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-6 mb-md-0 mb-2">
+          <h2>Контакти</h2>
+          <address>
+            <strong>VG Solution Corp.</strong><br>
+            ул. Дунав №1,<br>
+            9000 Варна, България<br>
+            <abbr title="Phone">тел:</abbr> (+359) 52 / 552 096 <br>
+			<abbr title="Fax">факс:</abbr> (+359) 52 / 552 096 <br>
+          </address>
+          <h4>Социални медии</h4>
+          <div class="row">
+            <div class="col-2"><img class="rounded-circle" src="images/facebook-logo.jpg" alt=""></div>
+            <div class="col-2"><img class="rounded-circle" src="images/viber-logo.png" alt=""></div>
+            <div class="col-2"><img class="rounded-circle" src="images/instagram-logo.png" alt=""></div>
+            <div class="col-2"><img class="rounded-circle" src="images/tiktok-logo.jpg" alt=""></div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-12">
+          <h2>Ценности</h2>
+          <ul class="list-unstyled">
+            <li class="media">
+              <img class="mr-3" src="images/experience-icon-green.png" alt="Generic placeholder image">
+              <div class="media-body">
+                <h5 class="mt-0 mb-1">НАШЕТО ГОЛЯМО СЕМЕЙСТВО</h5>
+                <p class="mb-0">Съдбата, тревогите и успехите на всеки са от значение за фирмата. Загрижени сме и помагаме за справяне с предизвикателствата и споделяме радостите.</p>
+				  <p>Нашата заедност се простира извън служебните отношения, извън това да творим заедно. Ние ценим семейство като ценност и фирмата е създадена и расте като голямо семейство.</p>
+              </div>
+            </li>
+            <li class="media my-4">
+              <img class="mr-3" src="images/quality-icon-green.png" alt="Generic placeholder image">
+              <div class="media-body">
+                <h5 class="mt-0 mb-1">ЗАЕДНО ПОСТИГАМЕ ПОВЕЧЕ</h5>
+                <p class="mb-0">Не се интересуваме само от собственото си благоденствие. Вълнуваме се от проблемите пред обществото и неразпознатите възможности. Търсим, създаваме и налагаме иновативни решения към проблеми и неадресирани възможности пред обществото. Заедно намираме удовлетворение и смисъл от живота в реализацията ни не само като професионалисти, но и в делата в полза на обществото. Свързва ни не само вдъхновението да творим заедно и да постигаме по-значими професионални резултати, но и заедно да даваме по-видима частица добро за обществото.</p>
+				
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="col-lg-4 col-12">
+          <h2>За компанията</h2>
+          <p>Информационните технологии са само инструмент, който може да помогне за вземане на адекватни бизнес решения и на практическото им изпълнение.</p>
+          <p>Ние подбираме и караме тези инструменти да работят за вас, като намираме най-добрите начини за това в светлината на целите, които сте си поставили.</p>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <footer class="text-center">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <p>Copyright © Веселин Георгиев Всички права запазени.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap-4.4.1.js"></script>
+  </body>
+</html>
