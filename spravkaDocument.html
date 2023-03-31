@@ -67,22 +67,60 @@
       var table =
         "<tr><th>Изх. №</th><th>Дата</th><th>Наименование</th><th>Сканиран файл</th></tr>";
       var x = xmlDoc.getElementsByTagName("UPDocDetails");
-
-      // Start to fetch the data by using TagName 
+      var docNomer, docDate, docName;
+      docNomer = document.getElementById("searchNomer").value;
+      docDate = document.getElementById("searchDate").value;
+      docName = document.getElementById("searchName").value;
       for (i = 0; i < x.length; i++) {
-        table += "<tr><td>" +
-          x[i].getElementsByTagName("Nomer")[0]
-            .childNodes[0].nodeValue + "</td><td>" +
-          x[i].getElementsByTagName("NomerDate")[0]
-            .childNodes[0].nodeValue + "</td><td>" +
-          x[i].getElementsByTagName("DocName")[0]
-            .childNodes[0].nodeValue + "</td><td><a href='data/'"+x[i].getElementsByTagName("UpFile")[0]
-            .childNodes[0].nodeValue + "'</a>" +
-          x[i].getElementsByTagName("UpFile")[0]
-            .childNodes[0].nodeValue + "</td></tr>";
-      }
-
-      // Print the xml data in table form
+        if (docNomer == null && docNomer == "" && docDate == null && docDate == "" &&
+          docName == null && docName == "") {
+            for (i = 0; i < x.length; i++) {
+              table += "<tr><td>" +
+              x[i].getElmentsByTagName("Nomer")[0]
+                .childNodes[0].nodeValue + "</td><td>" +
+              x[i].getElementsByTagName("NomerDate")[0]
+                .childNodes[0].nodeValue + "</td><td>" +
+              x[i].getElementsByTagName("DocName")[0]
+                .childNodes[0].nodeValue + "</td><td>" +
+              x[i].getElementsByTagName("UpFile")[0]
+                .childNodes[0].nodeValue + "</td></tr>";
+            }
+        } else {
+          if (docNomer == x[i].getElementsByTagName("Nomer")[0].childNodes[0].nodeValue) {
+            table += "<tr><td>" +
+              x[i].getElementsByTagName("Nomer")[0]
+                .childNodes[0].nodeValue + "</td><td>" +
+              x[i].getElementsByTagName("NomerDate")[0]
+                .childNodes[0].nodeValue + "</td><td>" +
+              x[i].getElementsByTagName("DocName")[0]
+                .childNodes[0].nodeValue + "</td><td>" +
+              x[i].getElementsByTagName("UpFile")[0]
+                .childNodes[0].nodeValue + "</td></tr>";  
+          }
+          if (docDate == x[i].getElementsByTagName("NomerDate")[0].childNodes[0].nodeValue) {
+            table += "<tr><td>" +
+              x[i].getElementsByTagName("Nomer")[0]
+                .childNodes[0].nodeValue + "</td><td>" +
+              x[i].getElementsByTagName("NomerDate")[0]
+                .childNodes[0].nodeValue + "</td><td>" +
+              x[i].getElementsByTagName("DocName")[0]
+                .childNodes[0].nodeValue + "</td><td>" +
+              x[i].getElementsByTagName("UpFile")[0]
+                .childNodes[0].nodeValue + "</td></tr>";  
+          }
+          if (docName == x[i].getElementsByTagName("DocName")[0].childNodes[0].nodeValue) {
+            table += "<tr><td>" +
+              x[i].getElementsByTagName("Nomer")[0]
+                .childNodes[0].nodeValue + "</td><td>" +
+              x[i].getElementsByTagName("NomerDate")[0]
+                .childNodes[0].nodeValue + "</td><td>" +
+              x[i].getElementsByTagName("DocName")[0]
+                .childNodes[0].nodeValue + "</td><td>" +
+              x[i].getElementsByTagName("UpFile")[0]
+                .childNodes[0].nodeValue + "</td></tr>";  
+          }
+        }
+      }     
       document.getElementById("table-id").innerHTML = table;
     }
   </script>
@@ -142,17 +180,17 @@
           <div class="row justify-content-center">
             <div class="col-auto">
               <label for="textfield">Търсене по номер: </label>
-              <input type="number" name="nomerfield" id="nomerfield">
+              <input type="number" name="searchNomer" id="searchNomer">
             </div>
             <div class="col-auto">
               <label for="textfield">Търсене по дата: </label>
-              <input type="date" name="datefield" id="datefield">
+              <input type="text" name="searchDate" id="searchDate">
             </div>
           </div>
           <div class="row justify-content-center">
             <div class="col-auto">
               <label for="textfield">Търсене по наименование на документа: </label>
-              <textarea id="namefield" name="namefield" rows="2" style="width: 100%;"></textarea>
+              <textarea id="searchName" name="searchName" rows="2" style="width: 100%;"></textarea>
             </div>
           </div>
           <br><br>

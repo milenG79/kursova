@@ -2,7 +2,7 @@
 <root>
 	<UPDocDetails>  
         <Nomer>1</Nomer>  
-        <NomerDate>12/03/2023</NomerDate>  
+        <NomerDate>12.03.2023</NomerDate>  
         <DocName>    
            Изх.Документ №1    
         </DocName>  
@@ -12,7 +12,7 @@
 	</UPDocDetails>   
 	<UPDocDetails> 
         <Nomer>2</Nomer>  
-        <NomerDate>12/03/2023</NomerDate>  
+        <NomerDate>12.03.2023</NomerDate>  
         <DocName>    
            Изх.Документ №2    
         </DocName>  
@@ -22,7 +22,7 @@
 	</UPDocDetails>
 	<UPDocDetails>  
         <Nomer>3</Nomer>  
-        <NomerDate>12/03/2023</NomerDate>  
+        <NomerDate>12.03.2023</NomerDate>  
         <DocName>    
            Изх.Документ №3    
         </DocName>  
